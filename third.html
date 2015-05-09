@@ -1,0 +1,44 @@
+
+<!-- IN THIS TUTOTIAL WE ARE INTRODUCED TO SCALES -->
+<!--scales are function and they return methods that can be used in other function-->
+<html>
+<head>
+	<title>D3 tutorial</title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+ 	var dataArray=[5,20,40,50]; <!-- sample data-->
+	var width=500;
+ 	var height=500;
+
+ 	<!--WIDTH SCALE-->
+ 	var widthScale=d3.scale.linear()
+ 					.domain([0,60])		<!-- this defines original range,0=min value and 60=value-->
+ 					.range([0, width]);	<!-- resulting range and we ware saying it should not exceed the max range i.e 500-->	
+	
+	<!-- COLOR SCALE-->
+ 	var color=d3.scale.linear()
+ 					.domain([0,60])		<!-- same as before-->
+ 					.range(["red", "blue"]);			<!-- range of color starting from min red to max is blue--> 	
+ 	
+ 	<!-- REMEMBER SVG STARTS DRAWING FROM TOP LEFT-->
+	var canvas=d3.select("body")	 <!--assigning it to variable-->
+			.append("svg")		<!--calling svg-->
+			.attr("width",width)	<!--kind of css -->
+			.attr("height",height);	<!--kind of css-->
+
+	<!--CREATING BAR CHARTS OF THE DATA-->
+	
+	var bars=canvas.selectAll("rect")	<!-- bars are rectangle-->
+					.data(dataArray)	<!--connecting to data-->
+					.enter()	<!--this method returns  place holder for each data element for each no corresponding dom element on the page-->
+					  .append("rect")	<!--this says for each data element append a rectangle-->
+					  .attr("width", function(d)	{ return widthScale(d); })  <!-- its an annonymous functionn that calls the widthScale and sets the ew range based on the input d-->
+					  .attr("height", 50) 
+					  .attr("fill", function(d){ return color(d);})	 <!-- change the color based on the function  color we created-->
+					  .attr("y",function(d,i)	{ return i*100 })	<!-- i is the index of element and d is the value of element-->
+
+	</script>
+</body>
+</html>

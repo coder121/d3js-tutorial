@@ -1,0 +1,49 @@
+
+<!-- This tutotial is an introduction to pie charts-->
+<html>
+<head>
+	<title> D3 TUTORIAL </title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+	var data=[10,50,80]
+
+	var r=360
+	var canvas=d3.select("body").append("svg")
+				.attr("width",1500)
+				.attr("height",1500)
+
+	var group=canvas.append("g")
+				.attr("tranform","translate(300,300)")
+
+<!-- layout take a set of data and recalculate it and returns a start angle and end angle for pie  layout example -->
+<!-- here we are not specifying the start angle and end angle, as the pie layout will provide us with those angles -->
+
+var arc=d3.svg.arc()
+			.innerRadius(200)
+			.outerRadius(r)					
+
+<!-- THE PIE LAYOUT-->
+var pie=d3.layout.pie()
+		.value(function (d){return d})  <!-- this is an accessor method -->
+
+<!-- bind the data to the document -->
+var arcs=group.selectAll(".arc")   <!-- this means select everything that has a class arc -->
+				.data (pie(data))  <!-- first the data is passed to the pie layout -->
+				.enter()
+				.append("g")
+				.attr("class","arc")
+
+
+<!-- CREATING PATH FOR THE OBJECTS -->
+	arcs.append("path")
+		.attr("d",arc)  <!--fetch the path data from arc path generator -->
+
+
+	
+	
+
+</script>
+</body>
+</html>

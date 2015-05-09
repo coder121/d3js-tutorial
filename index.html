@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- this is the introduction to d3js https://www.youtube.com/watch?v=n5NcCoa9dDU -->
+<html>
+
+<head>
+	<title> D3 tutorial</title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+
+<body>
+	<p>This is the paragraph</p>
+	<script>
+		d3.select("p").text("Hello word");<!--This will change the text-->
+		d3.select("body").append("p").text("Hi whats up")<!--example of javascript calling methods using chaing -->
+		console.log(d3);<!--you can view the d3 object on browser under page info then console-->
+
+		
+		<!--one another way of calling methods-->
+		d3.select("body")
+			.append("p")
+			.style("color","red")
+			.text("This is another way of calling methods ");
+		
+
+		<!-- you can call attr,example of attr are ahref,style etc -->
+		<!-- forr using svg you need a conatiner or canvas-->
+		var canvas=d3.select("body") <!--assigning it to variable-->
+			.append("svg")<!--calling svg-->
+			.attr("width",500)<!--kind of css -->
+			.attr("height",500)<!--kind of css-->
+			.text("This is another way of changing color");
+
+		
+			<!-- DRAWING A CRICLE-->
+			<!-- c=center,r=radius,fill=its like color-->
+		var circle=canvas.append("circle")
+						  .attr("cx",250)
+						  .attr("cy",250)
+						  .attr("r",50)
+						  .attr("fill","red");
+
+		
+			<!-- DRAWING A RECTANGLE-->		
+			<!--WE DID NOT MENTION THE COORDINATES HENCE IT SHOWS AT TOP LEFT-->	  
+		var rectangle=canvas.append("rect")
+							.attr("width",100)
+							.attr("height",100)
+							.attr("fill","blue")	
+
+		<!-- DRAWING A RECTANGLE-->	
+		<!--x1 =where the line should start from left ,y1=where the line should start fromtop,x2=where the line end from left,y2=where the line should end from top-->
+		var line=canvas.append("line")
+						.attr("x1",100)
+						.attr("y1",400)
+						.attr("x2",400)
+						.attr("y2",400)
+						.attr("stroke","green")	
+						.attr("stroke-width",10)					
+
+
+
+
+	</script>
+
+</body>
+
+</html>
