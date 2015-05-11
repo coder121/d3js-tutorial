@@ -1,0 +1,61 @@
+<!--In this tutorial we are intriduced to The Tree Layout (1/2)  https://youtu.be/x8dwXoWODZ4?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p -->
+<html>
+<head>
+	<title>D3 Tutorials</title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+</head>
+<body>
+	<script >
+	var canvas=d3.select("body").append("svg")
+				.attr("width",5000)
+				.attr("height",5000)
+				.append("g")
+					.attr("transform","translate(50,50)")
+
+	<!-- create a diagnol path similar to arc -->
+
+	var tree=d3.layout.tree()
+				.size([500,500]);
+
+				d3.json("familyTree.json",function(data){
+					var nodes=tree.nodes(data)		<!-- nodes consist of the data -->
+					 var links=tree.links(nodes)           <!-- the links method expects an input in the form of nodes-->
+
+					 <!-- data binding -->
+					 var node=canvas.selectAll(".node")
+					 			.data(nodes)
+					 			.enter()
+					 			.append("g")
+					 				.attr("class","node")
+					 				.attr("transform",function(d){return "translate("+d.y+","+d.x+")"})
+
+
+					 node.append("circle")
+					 		.attr("r",5)
+					 		.attr("fill","steelblue")
+
+					 node.append("text")
+					 	  .text(function(d){return d.name})
+
+					 var diagonal=d3.svg.diagonal()
+					 				.projection(function (d){ return [d.y,d.x]})
+
+					 canvas.selectAll(".links")
+					 		.data(links)
+					 		.enter()
+					 		.append("path")
+					 		.attr("class","links")
+					 		.attr("fill","none")
+					 		.attr("stroke","#ADADAD")
+					 		.attr("d",diagonal)
+					 
+
+
+				})
+
+	
+	</script>
+
+</body>
+</html>

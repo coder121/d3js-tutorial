@@ -1,0 +1,28 @@
+<!--This tutorial focuses on loading external data -->
+<html>
+<head>
+	<title>D3 Tutorials</title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+</head>
+<body>
+	<script >
+		d3.csv("smallData.csv",function(error,dataset){
+			dataset.forEach(function(d){
+                var count=0
+                count+=d.Year
+				console.log(count);
+
+			})
+		});
+	
+    
+
+				
+
+		
+
+	</script>
+
+</body>
+</html>
