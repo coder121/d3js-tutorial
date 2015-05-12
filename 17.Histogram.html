@@ -1,0 +1,44 @@
+<!-- In this tutorial we are introduced to Histograms , https://www.youtube.com/watch?v=cu-I2um024k -->
+
+<html>
+<head>
+	<title> D3 TUTORIAL </title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+	
+
+	d3.csv("csvFile.csv",function(data){
+			//console.log(data)
+			<!-- we are using the map to get another array and using a function to return only age -->
+			<!-- REMEMBER WHEN THE NUMBERS ARE TREATED AS STRINGS SO YOU NEED TO CONVERT THEM TO INTEGERS -->
+			var map=data.map(function (i){ return parseInt(i.age) }) 
+			console.log(map) 
+
+			var histogram=d3.layout.histogram()
+							.bins(10) <!-- this specify the intervals -->
+							(map)  <!-- specifying from where the data is coming from-->
+						//console.log(histogram)
+			var canvas=d3.select("body").append("svg")
+					.attr("width",500)
+					.attr("height",500)
+
+			var bars =canvas.selectAll(".bar")
+							.data(histogram)
+							.enter()
+							.append("g")
+
+				bars.append("rect")
+					.attr("x",function(d){ return d.x *10 }) <!-- it means use the lower bound -->
+					.attr("y",0)
+					.attr("width",function(d){return d.dx *10 }) <!-- width is set to range -->
+					.attr("height",function(d){return d.y *10})
+					.attr("fill","steelblue")	
+					
+	})
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!--THIS TUTORIAL FOCUS ON PATHS OF D3
+	YOU CAN WATCH THE VIDEO AT https://youtu.be/H3WsXg622WA?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p
+-->
+
+<html>
+<head>
+	<title> D3 TUTORIAL </title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+	var canvas=d3.select("body").append("svg")
+				.attr("width",500)
+				.attr("height",500)
+	var data=[
+				{x:10,y:20},
+				{x:40,y:60},
+				{x:50,y:70}
+			];
+	var group=canvas.append("g")
+			.attr("transform","translate(100,10)");
+
+	var line=d3.svg.line()
+				.x (function (d){return d.x}) <!--accessor function-->
+				.y(function(d){return d.y}) <!--accessor function-->		
+
+			group.selectAll("path") <!--bind the data to path -->
+			.data([data])
+			.enter() 
+			.append("path")
+			.attr("d",line)  <!-- calling line -->
+			.attr("fill","none")
+			.attr("stroke","black")
+			.attr("stroke-width",10)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!--THIS TUTORIAL FOCUS ON ARC OF D3
+	YOU CAN WATCH THE VIDEO AT https://youtu.be/oOu8y51VwMM?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p
+-->
+
+<html>
+<head>
+	<title> D3 TUTORIAL </title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+	var canvas=d3.select("body").append("svg")
+				.attr("width",500)
+				.attr("height",500)
+	
+	var group=canvas.append("g")
+			.attr("transform","translate(100,100)");
+
+	var r=100; <!--radius-->
+	var p=Math.PI*2;  <!-- full circle is 6.28 RADIANS -->
+
+
+<!-- THERE 4 ACCESSOR METHODS FOR ARC AND NOTE IN D3 THE ANGLES ARE MEASURED IN RADIANS NOT DEGREES-->
+	var arc=d3.svg.arc()   
+				.innerRadius(r-20)
+				.outerRadius(r)
+				.startAngle(0)
+				.endAngle(p-2)
+
+		group.append("path")
+			.attr("d",arc)
+
+	
+
+</script>
+</body>
+</html>

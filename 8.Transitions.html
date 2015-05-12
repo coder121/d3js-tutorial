@@ -1,0 +1,64 @@
+<!--This tutorial is about transtions i.e the animations,https://www.youtube.com/watch?v=OZXYk_bgQGQ-->
+
+<html>
+<head>
+	<title> D3 TUTORIAL </title>
+	<script src="http://d3js.org/d3.v3.min.js"> </script>
+</head>
+<body>
+	<script>
+	var data=[10];
+	var canvas=d3.select("body")
+				.append("svg")
+				.attr("width",500)
+				.attr("height",500)
+
+	var circle=canvas.append("circle")		
+					.attr("cx",50)
+					   .attr("cy",50)
+					   .attr("r",25)	
+
+		var rectangle=canvas.append("rect")
+							.attr("x",300)
+							.attr("y",100)
+							.attr("width",80)
+							.attr("height",50)
+							.attr("fill","blue")
+
+					   	
+
+
+
+	<!-- animate the circle-->				   
+	circle.transition()
+		.duration(1500)	<!-- specify the duration -->
+		.delay(2000) <!-- specify the delay as in when to start -->
+		.attr("cx",350) <!-- moves the circle in right direction -->
+		.transition() 	<!-- new transition-->
+		.attr("cy",200) <!-- moves down-->
+		.transition()
+		.attr("r",100) <!-- change radius-->
+		.transition()
+		.attr("fill","red") <!-- change color-->
+		.transition()
+		.attr("r",25)	<!-- change radius-->	
+		.transition()
+		.attr("fill","black") <!-- change color-->
+
+
+
+rectangle.transition()
+		.duration(1500)
+		.delay(3000)
+		.attr("x",-10)             
+		.each("end",function(){	
+								d3.select(this).attr("width",120); 
+								d3.select(this).attr("height",90);
+								d3.select(this).attr("fill","yellow")})
+
+		
+					   
+
+</script>
+</body>
+</html>

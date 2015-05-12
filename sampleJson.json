@@ -1,0 +1,63 @@
+{
+	"name":"A",
+	"value":80,
+	"children":[
+	{
+		"name":"B",
+		"value":45,
+		"children":[
+		{"name":"C","value":14}
+		]
+
+
+
+
+	},
+	
+	{
+
+	"name":"D",
+	"value":45,
+
+	"children":[
+	
+		{"name":"T","value":14},
+		
+
+	]
+
+	},
+	{
+
+	"name":"B",
+	"value":45,
+	"children":[
+	
+		{"name":"A","value":14},
+		{"name":"H","value":14},
+		{"name":"AB","value":14}
+
+	]
+
+	},
+	{
+		"name":"FA",
+		"value":30
+		
+
+	},
+	{
+		"name":"SQ",
+		"value":30
+		
+	}
+
+
+
+
+
+	]
+
+
+
+}
